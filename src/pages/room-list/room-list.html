@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedItem.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<
+
+<ion-content padding>
+  <h1> Räume</h1>
+  <div *ngIf="items.length<1 &&loadingFinished == true">
+    Für dieses Gebäude existieren keine Raum-Daten.
+  </div>
+
+  <div *ngIf="items.length>0">
+    <ion-searchbar (ionInput)="getItems($event)" (search)="closeKeyboard($event)"></ion-searchbar>
+    <ion-list>
+      <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+        {{item.name}}
+        <p>
+          {{item.description}}
+        </p>
+      </button>
+    </ion-list>
+  </div>
+
+</ion-content>

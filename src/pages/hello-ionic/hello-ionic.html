@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Hello Ionic</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding="true">
+
+  {{input}}
+  <ion-searchbar
+    [(ngModel)]="input">
+  </ion-searchbar>
+  <button (click)="clicked()" ion-button>Button</button>
+
+</ion-content>

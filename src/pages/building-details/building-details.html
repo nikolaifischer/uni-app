@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedItem.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <img src="../../assets/lrz/hauptgebaude.jpg">
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-0 col-lg-4></ion-col>
+      <ion-col col-12 col-lg-4>
+        <button style="width: 100%;" ion-button (click)="goToRooms($event, selectedItem)" color="light">Räume</button>
+
+      </ion-col>
+      <ion-col col-0 col-lg-4></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-0 col-lg-4></ion-col>
+      <ion-col col-12 col-lg-4>
+
+        <button  style="width: 100%;" ion-button (click)="favorite($event, selectedItem)" color="light" ion-button icon-right>
+          Favorisieren
+          <ion-icon name="star-outline" style="color:yellow;"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-0 col-lg-4></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-0 col-lg-4></ion-col>
+      <ion-col col-12 col-lg-4>
+
+        <ion-card>
+          <ion-card-header class="chart-header">
+            Auslastung
+          </ion-card-header>
+          <canvas width="400" height="400" class="chart-canvas" #liveCanvas></canvas>
+
+          <div class="percentage"> {{(selectedItem.now/selectedItem.max) | percent:'1.0-0'}}</div>
+        </ion-card>
+      </ion-col>
+      <ion-col col-0 col-lg-4></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <h4 text-center *ngIf="selectedItem">
+        Now: <b>{{selectedItem.now}}</b>
+        Max: <b>{{selectedItem.max}}</b>
+        Ratio: <b> {{selectedItem.now/selectedItem.max}}</b>
+        Überprüft: <b> {{selectedItem.date}}</b>
+      </h4>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

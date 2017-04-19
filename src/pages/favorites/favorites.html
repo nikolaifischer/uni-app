@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Favoriten</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-card-header>
+      Gebäude
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <button ion-item *ngFor="let building of buildings" (click)="buildingTapped($event, building)">
+          {{building.name}}
+          <p>
+            {{building.description}}
+          </p>
+        </button>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      Räume
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <button ion-item *ngFor="let room of rooms" (click)="roomTapped($event, room)">
+          {{room.name}}
+          <p>
+            {{room.description}}
+          </p>
+        </button>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

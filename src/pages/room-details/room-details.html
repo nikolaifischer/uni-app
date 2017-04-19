@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedItem.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h4 text-center *ngIf="selectedItem">
+    Now: <b>{{selectedItem.now}}</b>
+    Max: <b>{{selectedItem.max}}</b>
+    Ratio: <b> {{selectedItem.now/selectedItem.max}}</b>
+  </h4>
+
+  <div>
+    <button ion-button (click)="favorite($event, selectedItem)" color="light">Favorisieren</button>
+  </div>
+
+</ion-content>
