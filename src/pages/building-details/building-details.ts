@@ -14,19 +14,40 @@ export class BuildingDetailsPage {
   @ViewChild('liveCanvas') liveCanvas;
   liveChart: any;
   selectedItem: any;
+  favorited:boolean = false;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
+
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     console.log(this.selectedItem);
+
     if(this.selectedItem.max < 1) {
       this.selectedItem.max = 1;
     }
 
+    this.storage.ready().then(() => {
+
+      this.storage.get('building-favs').then((val) => {
+        let favs = val;
+        if(favs != null && favs!=undefined){
+          if(favs.indexOf(this.selectedItem.id)>-1){
+            this.favorited=true;
+
+          }
+
+
+        }
+
+      })});
+
     // Example:
 
+
   }
+
 
   ionViewDidLoad() {
 
@@ -51,6 +72,11 @@ export class BuildingDetailsPage {
             "#FFCE56"
           ]
         }]
+      },
+      options:{
+        tooltips:{
+          enabled: false
+        }
       }
 
     });
@@ -75,25 +101,30 @@ export class BuildingDetailsPage {
           favs = [];
         }
 
-
+        // Not in Favs yet.
+        if(favs.indexOf(item.id)<0) {
           favs.push(item.id);
           this.storage.set('building-favs', favs).then((success) => {
-
-            console.log("Saved fav");
-
-
+            this.favorited=true;
           });
 
+        }
 
-
+        else {
+          this.favorited = false;
+          favs.splice(favs.indexOf(item.id),1);
+          this.storage.set('building-favs', favs).then((success) => {
+            this.favorited=false;
+          });
+        }
 
       });
-
-
 
     });
 
 
   }
+
+
 
 }

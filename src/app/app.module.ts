@@ -12,6 +12,9 @@ import {RoomListPage} from "../pages/room-list/room-list";
 import {RoomDetailsPage} from "../pages/room-details/room-details";
 import { IonicStorageModule } from '@ionic/storage';
 import {FavoritesPage} from "../pages/favorites/favorites";
+import {HelpPage} from "../pages/help/help";
+import {AboutPage} from "../pages/about/about";
+import {LicencesPage} from "../pages/about/licences";
 
 
 
@@ -23,7 +26,10 @@ import {FavoritesPage} from "../pages/favorites/favorites";
     ListPage,
     RoomListPage,
     RoomDetailsPage,
-    FavoritesPage
+    FavoritesPage,
+    HelpPage,
+    AboutPage,
+    LicencesPage
   ],
   imports: [
     IonicModule.forRoot(UniApp),
@@ -38,7 +44,10 @@ import {FavoritesPage} from "../pages/favorites/favorites";
     BuildingDetailsPage,
     RoomListPage,
     RoomDetailsPage,
-    FavoritesPage
+    FavoritesPage,
+    HelpPage,
+    AboutPage,
+    LicencesPage
   ],
   providers: [
     StatusBar,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import { Renderer } from '@angular/core';
 
 import {BuildingDetailsPage} from '../building-details/building-details';
@@ -22,19 +22,37 @@ export class ListPage {
   icons: string[];
   items: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public buildingService: BuildingService, public keyboard: Keyboard, public renderer: Renderer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public buildingService: BuildingService, public keyboard: Keyboard, public renderer: Renderer, public loadingCtrl: LoadingController) {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Laden...'
+    });
+    loading.present();
+
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
 
     console.log("Loading Data:");
     buildingService.getByUniversity("test").subscribe(res => {
       console.log("Got a response");
-      this.items = res
+      this.items = this.sort(res);
       this.buildings = this.items;
+      loading.dismiss();
+    },error => console.log(error));
+
+
+  }
+
+  sort(buildings){
+    if(buildings==undefined || buildings==null || buildings.length<0){
+      return buildings;
+    }
+
+    buildings.sort(function(a,b){
+      return a.name.localeCompare(b.name);
     });
 
-    this.items = [];
+    return buildings;
 
   }
 
@@ -46,6 +64,7 @@ export class ListPage {
 
 
   getItems(ev: any) {
+    console.log("Get Items");
     // Reset items back to all of the items
     this.items = this.buildings;
 

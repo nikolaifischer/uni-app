@@ -3,23 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Gebäude</ion-title>
+    <ion-title>München</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar #searchbar (ionInput)="getItems($event)" (search)="closeKeyboard($event)"></ion-searchbar>
+  <ion-searchbar placeholder="Gebäude durchsuchen" #searchbar (ionInput)="getItems($event)" (search)="closeKeyboard($event)"></ion-searchbar>
   <ion-list>
-    <div *ngFor="let item of items" >
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+    <button  ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       {{item.name}}
       <p>
         {{item.description}}
       </p>
-
     </button>
-      <button ion-button clear item-right>View</button>
-    </div>
   </ion-list>
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>

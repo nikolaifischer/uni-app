@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 
 
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, LoadingController} from 'ionic-angular';
 import {RoomService} from "../../services/room.service";
 import {RoomDetailsPage} from "../room-details/room-details";
 import { Keyboard } from '@ionic-native/keyboard';
@@ -24,23 +24,26 @@ export class RoomListPage {
   loadingFinished:boolean = false;
   //id:string = this.selectedItem.id;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public roomService: RoomService, public keyboard:Keyboard, public renderer: Renderer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public roomService: RoomService, public keyboard:Keyboard, public renderer: Renderer, public loadingCtrl:LoadingController) {
     // If we navigated to this page, we will have an item available as a nav param
+    let loading = this.loadingCtrl.create({
+      content: 'Laden...'
+    });
+    loading.present();
     this.selectedItem = navParams.get('item');
     console.log(this.selectedItem);
 
+    this.items=[];
 
-
-    console.log("Loading Data:");
 
     roomService.getAll(this.selectedItem.id).subscribe(res => {
-      this.items = res;
+      this.items = this.sort(res);
       this.rooms = this.items;
       this.loadingFinished = true;
-    });
+      loading.dismiss();
+    },error => console.log(error));
 
 
-    this.items = [];
 
   }
   itemTapped(event, item) {
@@ -48,6 +51,20 @@ export class RoomListPage {
       item: item
     });
   }
+
+  sort(rooms){
+    if(rooms==undefined || rooms==null || rooms.length<0){
+      return rooms;
+    }
+
+    rooms.sort(function(a,b){
+      return (a.now/a.max) -(b.now/b.max);
+    });
+
+    return rooms;
+
+  }
+
 
   getItems(ev: any) {
     // Reset items back to all of the items

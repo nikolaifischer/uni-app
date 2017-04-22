@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 
-<
 
 <ion-content padding>
   <h1> Räume</h1>
@@ -15,14 +14,19 @@
     Für dieses Gebäude existieren keine Raum-Daten.
   </div>
 
-  <div *ngIf="items.length>0">
-    <ion-searchbar (ionInput)="getItems($event)" (search)="closeKeyboard($event)"></ion-searchbar>
+  <div *ngIf="items.length>0 &&loadingFinished == true">
+    <ion-searchbar placeholder="Räume durchsuchen" (ionInput)="getItems($event)" (search)="closeKeyboard($event)"></ion-searchbar>
+
     <ion-list>
       <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-        {{item.name}}
-        <p>
-          {{item.description}}
-        </p>
+        <div>
+          {{item.name}}
+          <p style="margin-top:5px;">
+            Auslastung: {{item.now/item.max | percent:'1.0-0'}}
+          </p>
+        </div>
+
+
       </button>
     </ion-list>
   </div>

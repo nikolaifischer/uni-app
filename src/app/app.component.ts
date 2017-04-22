@@ -8,6 +8,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ListPage } from '../pages/list/list';
 import {FavoritesPage} from '../pages/favorites/favorites';
+import {HelpPage} from "../pages/help/help";
+import {AboutPage} from "../pages/about/about";
 
 
 @Component({
@@ -30,8 +32,10 @@ export class UniApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Gebäude', component: ListPage },
-      { title: 'Favoriten', component: FavoritesPage }
+      { title: 'Suche', component: ListPage },
+      { title: 'Favoriten', component: FavoritesPage },
+      {title: 'Hilfe', component: HelpPage},
+      {title: 'Über', component: AboutPage}
 
     ];
   }

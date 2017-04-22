@@ -9,10 +9,10 @@
 
 <ion-content padding>
 
-  <ion-card>
+  <ion-card *ngIf="buildings.length>0">
 
     <ion-card-header>
-      Gebäude
+      <h1>Gebäude</h1>
     </ion-card-header>
 
     <ion-card-content>
@@ -28,10 +28,10 @@
 
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="rooms.length>0">
 
     <ion-card-header>
-      Räume
+     <h1> Räume </h1>
     </ion-card-header>
 
     <ion-card-content>
