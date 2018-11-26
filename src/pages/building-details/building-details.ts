@@ -24,7 +24,7 @@ export class BuildingDetailsPage {
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    this.selectedItem.date = new Date(this.selectedItem.date);
+    this.selectedItem.date = new Date(this.selectedItem.date).toLocaleString();
 
     var today:Date = new Date();
     this.prepareChartData(today.getDay());
@@ -33,6 +33,7 @@ export class BuildingDetailsPage {
       this.selectedItem.max = 1;
     }
 
+    // Check if room was favorited
     this.storage.ready().then(() => {
 
       this.storage.get('building-favs').then((val) => {
@@ -48,9 +49,6 @@ export class BuildingDetailsPage {
 
       })
     });
-
-    // Example:
-
 
   }
 
@@ -87,47 +85,6 @@ export class BuildingDetailsPage {
       }
 
     });
-
-    //BAR CHART
-
-    var data = {
-      labels: ["0:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00","8:00","9:00","10:00", "11:00","12:00"],
-      datasets: [
-        {
-          label: "My First dataset",
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1,
-          data: [0.1, 0.05, 0.4, 0.6, 0.5, 0.7, 0.8, 0.9,0.4,0.5,0.6]
-        }
-      ]
-    };
-
-    let options = {
-      tooltips: {
-        enabled: false
-      }
-    };
-    var myBarChart = new Chart(this.barCanvas.nativeElement, {
-      type: 'bar',
-      data: data,
-      options: options
-    });
-
 
   }
 

@@ -1,7 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { UniApp } from './app.component';
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { BuildingDetailsPage } from '../pages/building-details/building-details';
 import { ListPage } from '../pages/list/list';
 import { HttpModule } from '@angular/http';
@@ -21,7 +20,6 @@ import {LicencesPage} from "../pages/about/licences";
 @NgModule({
   declarations: [
     UniApp,
-    HelloIonicPage,
     BuildingDetailsPage,
     ListPage,
     RoomListPage,
@@ -40,7 +38,6 @@ import {LicencesPage} from "../pages/about/licences";
   entryComponents: [
     UniApp,
     ListPage,
-    HelloIonicPage,
     BuildingDetailsPage,
     RoomListPage,
     RoomDetailsPage,

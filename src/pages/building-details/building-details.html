@@ -21,6 +21,9 @@
           <img *ngIf="selectedItem.image" [src]="selectedItem.image">
           <ion-card-content>
             <ion-card-title>
+              <div class="mode-indicator">
+                <ion-icon name="home"></ion-icon> <span>Gebäude</span>
+              </div>
               <h1>
                 {{selectedItem.name}}
               </h1>
@@ -69,29 +72,17 @@
       <ion-col col-0 col-lg-4></ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col col-0 col-lg-4></ion-col>
-      <ion-col col-12 col-lg-4>
-
-        <ion-card>
-          <ion-card-header class="chart-header">
-            Prognose
-          </ion-card-header>
-          <canvas width="400" height="400" class="chart-canvas" #barCanvas></canvas>
-
-        </ion-card>
-
-
+    <ion-row justify-content-center>
+      <ion-col col-3>
+        <div style="text-align: center;">Überprüft: <b>{{selectedItem.date}} Uhr</b></div>
       </ion-col>
-      <ion-col col-0 col-lg-4></ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="debug-output">
       <h4 text-center *ngIf="selectedItem">
         Now: <b>{{selectedItem.now}}</b>
         Max: <b>{{selectedItem.max}}</b>
         Ratio: <b> {{selectedItem.now/selectedItem.max}}</b>
-        Überprüft: <b> {{selectedItem.date}}</b>
       </h4>
 
     </ion-row>

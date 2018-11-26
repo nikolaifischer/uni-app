@@ -1,6 +1,12 @@
 // http://ionicframework.com/docs/v2/theming/
 
-
+.mode-indicator{
+  font-size: 14px;
+  font-family: sans-serif;
+}
+.debug-output{
+  display:none;
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

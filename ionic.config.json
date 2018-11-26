@@ -1,6 +1,7 @@
 {
   "name": "MyIonic2Project",
-  "app_id": "b724657f",
+  "integrations": {},
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "pro_id": "b724657f"
 }

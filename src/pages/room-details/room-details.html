@@ -9,14 +9,64 @@
 
 <ion-content padding>
 
-  <h4 text-center *ngIf="selectedItem">
+  <ion-row>
+    <ion-col col-0 col-lg-4></ion-col>
+    <ion-col col-12 col-lg-4>
+      <ion-card>
+        <img *ngIf="selectedItem.image" [src]="selectedItem.image">
+        <ion-card-content>
+          <ion-card-title>
+            <div class="mode-indicator">
+              <ion-icon name="cube"></ion-icon> <span>Raum</span>
+            </div>
+            <h1>
+              {{selectedItem.name}}
+            </h1>
+          </ion-card-title>
+          <p>
+            {{selectedItem.description}}
+          </p>
+        </ion-card-content>
+        <ion-row>
+          <ion-col col-4>
+          </ion-col>
+          <ion-col col-4>
+            <button *ngIf="!favorited" ion-button style="width:100%;" small clear outline (click)="favorite($event, selectedItem)" color="primary" icon-left>
+              <ion-icon  name="star-outline"></ion-icon>
+              Favorit
+            </button>
+            <button *ngIf="favorited" ion-button style="width:100%;" small clear outline (click)="favorite($event, selectedItem)" color="primary" icon-left>
+              <ion-icon  name="star"></ion-icon>
+              Favorit
+            </button>
+          </ion-col>
+          <ion-col col-4>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+    <ion-col col-0 col-lg-4></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-0 col-lg-4></ion-col>
+    <ion-col col-12 col-lg-4>
+
+      <ion-card>
+        <ion-card-header class="chart-header">
+          Auslastung
+        </ion-card-header>
+        <div class="percentage"> {{(selectedItem.now/selectedItem.max) | percent:'1.0-0'}}</div>
+        <canvas width="400" height="400" class="chart-canvas" #liveCanvas></canvas>
+
+      </ion-card>
+
+
+    </ion-col>
+    <ion-col col-0 col-lg-4></ion-col>
+  </ion-row>
+  <h4 class="debug-output" text-center *ngIf="selectedItem">
     Now: <b>{{selectedItem.now}}</b>
     Max: <b>{{selectedItem.max}}</b>
     Ratio: <b> {{selectedItem.now/selectedItem.max}}</b>
   </h4>
-
-  <div>
-    <button ion-button (click)="favorite($event, selectedItem)" color="light">Favorisieren</button>
-  </div>
-
 </ion-content>
