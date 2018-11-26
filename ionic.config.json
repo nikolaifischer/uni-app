@@ -1,7 +1,9 @@
 {
   "name": "MyIonic2Project",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "v2": true,
   "typescript": true,
-  "pro_id": "b724657f"
+  "pro_id": "dd1e520a"
 }
