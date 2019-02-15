@@ -27,6 +27,7 @@
     "angular": "^1.7.5",
     "chart.js": "^2.5.0",
     "cordova-android": "7.1.4",
+    "cordova-browser": "5.0.4",
     "cordova-plugin-console": "^1.0.5",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-splashscreen": "^4.0.3",
@@ -64,7 +65,8 @@
       "ionic-plugin-keyboard": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }
