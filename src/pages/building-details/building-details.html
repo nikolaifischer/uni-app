@@ -58,14 +58,7 @@
       <ion-col col-0 col-lg-4></ion-col>
       <ion-col col-12 col-lg-4>
 
-        <ion-card>
-          <ion-card-header class="chart-header">
-            Auslastung
-          </ion-card-header>
-          <div class="percentage"> {{(selectedItem.now/selectedItem.max) | percent:'1.0-0'}}</div>
-          <canvas width="400" height="400" class="chart-canvas" #liveCanvas></canvas>
-
-        </ion-card>
+      <capacity-gauge now="{{selectedItem.now}}" max="{{selectedItem.max}}"> </capacity-gauge>
 
 
       </ion-col>

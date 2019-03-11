@@ -1,0 +1,8 @@
+<ion-card>
+  <ion-card-header class="chart-header">
+    Auslastung
+  </ion-card-header>
+  <div class="percentage"> {{(now/max) | percent:'1.0-0'}}</div>
+  <canvas width="400" height="400" class="chart-canvas" #liveCanvas></canvas>
+
+</ion-card>

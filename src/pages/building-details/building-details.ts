@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {RoomListPage} from "../room-list/room-list";
 import {Storage} from '@ionic/storage';
-import {Chart} from 'chart.js';
 import {ViewChild} from '@angular/core';
 import * as moment from 'moment/moment';
 
@@ -12,9 +11,7 @@ import * as moment from 'moment/moment';
   templateUrl: 'building-details.html'
 })
 export class BuildingDetailsPage {
-  @ViewChild('liveCanvas') liveCanvas;
   @ViewChild('barCanvas') barCanvas;
-  liveChart: any;
   selectedItem: any;
   favorited: boolean = false;
 
@@ -54,37 +51,6 @@ export class BuildingDetailsPage {
 
 
   ionViewDidLoad() {
-
-    // DOUGHNUT CHART
-    this.liveChart = new Chart(this.liveCanvas.nativeElement, {
-
-      type: 'doughnut',
-      data: {
-        labels: ["Belegt", "Frei"],
-        datasets: [{
-          label: '# of Votes',
-          data: [this.selectedItem.now / this.selectedItem.max, 1 - this.selectedItem.now / this.selectedItem.max],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-      },
-      options: {
-        tooltips: {
-          enabled: false
-        }
-      }
-
-    });
 
   }
 

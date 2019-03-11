@@ -42,7 +42,7 @@
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "^3.2.0",
+    "@ionic/app-scripts": "3.2.3",
     "typescript": "2.3.4"
   },
   "cordovaPlugins": [
@@ -68,5 +68,6 @@
       "android",
       "browser"
     ]
-  }
+  },
+  "config":{"ionic_source_map_type": "source-map"}
 }

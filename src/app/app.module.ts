@@ -14,6 +14,7 @@ import {FavoritesPage} from "../pages/favorites/favorites";
 import {HelpPage} from "../pages/help/help";
 import {AboutPage} from "../pages/about/about";
 import {LicencesPage} from "../pages/about/licences";
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -32,7 +33,8 @@ import {LicencesPage} from "../pages/about/licences";
   imports: [
     IonicModule.forRoot(UniApp),
     HttpModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
