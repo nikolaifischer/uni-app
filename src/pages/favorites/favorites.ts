@@ -39,23 +39,16 @@ export class FavoritesPage {
 
         for (let i = 0; i < val.length; i++) {
           buildingService.getById(val[i]).subscribe(res => {
-
             this.buildings.push(res);
-            if(loadingActive){
-              loading.dismiss();
-              loadingActive=false;
-            }
-
-          }, error => console.log(error));
+          }, error => {
+            console.log(error)
+          });
         }
       }
-      else{
-        if(loadingActive){
-          loading.dismiss();
-          loadingActive=false;
-        }
+      if(loadingActive){ 
+        loading.dismiss();
+        loadingActive=false;
       }
-
     });
 
 

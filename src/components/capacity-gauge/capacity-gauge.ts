@@ -13,8 +13,8 @@ export class CapacityGaugeComponent implements OnInit {
   // Max number of persons in this room ever
   @Input() max: number;
 
-  // Todo: Typisieren
-  liveChart: any;
+
+  liveChart;
   @ViewChild('liveCanvas') liveCanvas;
 
   constructor() {
@@ -25,9 +25,6 @@ export class CapacityGaugeComponent implements OnInit {
   }
 
   buildGauge(){
-    console.log("Building");
-    console.log(this.now);
-      // DOUGHNUT CHART
       this.liveChart = new Chart(this.liveCanvas.nativeElement, {
 
         type: 'doughnut',

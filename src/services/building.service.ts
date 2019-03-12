@@ -3,7 +3,7 @@ import {Http, URLSearchParams, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs";
-import {Building} from '../models/building';
+import { Item } from 'ionic-angular/umd/components/item/item';
 
 @Injectable()
 export class BuildingService {
@@ -15,7 +15,7 @@ export class BuildingService {
   }
 
 
-  getAll(): Observable<Building[]>{
+  getAll(): Observable<Item[]>{
     let buildings = this.http
       .get(this.url)
       .map(function(response){return response.json()})
@@ -23,7 +23,7 @@ export class BuildingService {
     return buildings;
   }
 
-  getByUniversity(university: string): Observable<Building []>{
+  getByUniversity(university: string): Observable<Item []>{
     let params: URLSearchParams = new URLSearchParams();
     let filter: string = '{"universityId":"58f0bb3395719700113a5fe5"}';
     params.set('filter', filter);
@@ -34,7 +34,7 @@ export class BuildingService {
     return buildings;
   }
 
-  getById(id:string): Observable<Building> {
+  getById(id:string): Observable<Item> {
     let searchUrl: string = this.url+"/"+id;
     let building= this.http
       .get(searchUrl)
@@ -45,7 +45,7 @@ export class BuildingService {
   }
 
   // TODO: Not implemented yet!
-  getByName(name:string):Observable<Building> {
+  getByName(name:string):Observable<Item> {
     let searchUrl: string = this.url+"/"+name;
     let building= this.http
       .get(searchUrl)

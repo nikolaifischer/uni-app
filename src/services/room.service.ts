@@ -3,7 +3,7 @@ import {Http, URLSearchParams, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs";
-import {Room} from "../models/room";
+import { Item } from '../models/item';
 
 @Injectable()
 export class RoomService {
@@ -17,7 +17,7 @@ export class RoomService {
   }
 
 
-  getAll(buildingId: string): Observable<Room[]> {
+  getAll(buildingId: string): Observable<Item[]> {
 
     let searchUrl = '/' + buildingId + '/rooms'
     let rooms = this.http
@@ -30,7 +30,7 @@ export class RoomService {
     return rooms;
   }
 
-  getById(id: string): Observable<Room> {
+  getById(id: string): Observable<Item> {
     let searchUrl: string = this.roomUrl + "/" + id;
     let room = this.http
       .get(searchUrl)
@@ -43,7 +43,6 @@ export class RoomService {
   }
 
   private handleError(error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';

@@ -31,16 +31,7 @@
           <ion-col col-4>
           </ion-col>
           <ion-col col-4>
-            <button *ngIf="!favorited" ion-button style="width:100%;" small clear outline (click)="favorite($event, selectedItem)"
-              color="primary" icon-left>
-              <ion-icon name="star-outline"></ion-icon>
-              Favorit
-            </button>
-            <button *ngIf="favorited" ion-button style="width:100%;" small clear outline (click)="favorite($event, selectedItem)"
-              color="primary" icon-left>
-              <ion-icon name="star"></ion-icon>
-              Favorit
-            </button>
+            <favorite-button itemId= "{{selectedItem.id}}" forRoom="{{true}}"></favorite-button>
           </ion-col>
           <ion-col col-4>
           </ion-col>
