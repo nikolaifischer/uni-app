@@ -21,7 +21,7 @@
       <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
         <div>
           {{item.name}}
-          <p style="margin-top:5px;">
+          <p class="capacity-text">
             Auslastung: {{item.now/item.max | percent:'1.0-0'}}
           </p>
         </div>
